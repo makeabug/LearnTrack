@@ -12,6 +12,6 @@ abstract class LearnTrackActiveRecord extends CActiveRecord
             $this->update_time = new CDbException('NOW()');
             $this->update_user_id = Yii::app()->user->id;
         }
-        parent::beforeValidate();
+        return parent::beforeValidate();
     }
 }

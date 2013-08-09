@@ -32,7 +32,7 @@ class PostController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','list'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -62,6 +62,7 @@ class PostController extends Controller
 	 */
 	public function actionCreate()
 	{
+	    $this->layout = '//layouts/admin';
 		$model=new Post;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -127,7 +128,15 @@ class PostController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
-
+	
+	public function actionList()
+	{
+	    $dataProvider=new CActiveDataProvider('Post');
+		$this->render('list',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+	
 	/**
 	 * Manages all models.
 	 */

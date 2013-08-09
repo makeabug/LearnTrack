@@ -15,6 +15,9 @@
  */
 class Post extends LearnTrackActiveRecord
 {
+    const TYPE_BLOG = 0;
+    const TYPE_WIKI = 1;
+    
 	/**
 	 * @return string the associated database table name
 	 */
@@ -32,7 +35,7 @@ class Post extends LearnTrackActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, content', 'required'),
-			array('type', 'integerOnly'=>true),
+			//array('type', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -109,5 +112,13 @@ class Post extends LearnTrackActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function getTypeOptions()
+	{
+	    return array(
+	       self::TYPE_BLOG => 'Blog',
+	       self::TYPE_WIKI => 'Wiki',
+	    );
 	}
 }

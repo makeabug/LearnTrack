@@ -13,7 +13,7 @@
                                 'url'=>'#', 
                                 'submenuOptions' => array('class'=>'nav'), 
                                 'items'=>array(
-                                    array('label'=>'List Blog', 'url'=>array('post/list')),
+                                    array('label'=>'List Blog', 'url'=>array('post/admin')),
                                     array('label'=>'Create Blog', 'url'=>array('post/create')),
                                 ),
                             ),

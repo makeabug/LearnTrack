@@ -14,7 +14,7 @@ class PostTest extends CDbTestCase
         $newPost->setAttributes(array(
             'title' => $newPostTitle,
             'content' => 'This is a test for new post creation.',
-            'type' => 0,
+            'type_id' => 0,
         ));
         Yii::app()->user->setId($this->users('user1')->id);
         $this->assertTrue($newPost->save());

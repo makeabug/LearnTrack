@@ -16,18 +16,12 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Post #<?php echo $model->id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'title',
-		'content',
-		'type',
-		'create_time',
-		'create_user_id',
-		'update_time',
-		'update_user_id',
-	),
-)); ?>
+<div class="bs-docs-section">
+    <div class="page-header">
+        </h1><?php echo CHtml::encode($model->title);?></h1>
+    </div>
+    <span><?php echo CHtml::encode($model->update_time);?></span>
+    <div class="page-content">
+        <?php echo CHtml::encode($model->content); ?>
+    </div>
+</div>

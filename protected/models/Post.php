@@ -39,7 +39,7 @@ class Post extends LearnTrackActiveRecord
 			array('title', 'length', 'max'=>256),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, content, type, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
+			array('id, title, content, type_id, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,6 +51,8 @@ class Post extends LearnTrackActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'create_user' => array(self::BELONGS_TO, 'User', 'create_user_id'),
+            'update_user' => array(self::BELONGS_TO, 'User', 'update_user_id'),
 		);
 	}
 
@@ -63,7 +65,7 @@ class Post extends LearnTrackActiveRecord
 			'id' => 'ID',
 			'title' => 'Title',
 			'content' => 'Content',
-			'type' => 'Type',
+			'type_id' => 'Type',
 			'create_time' => 'Create Time',
 			'create_user_id' => 'Create User',
 			'update_time' => 'Update Time',
@@ -92,7 +94,7 @@ class Post extends LearnTrackActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('type',$this->type);
+		$criteria->compare('type_id',$this->type_id);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('create_user_id',$this->create_user_id);
 		$criteria->compare('update_time',$this->update_time,true);
@@ -121,4 +123,12 @@ class Post extends LearnTrackActiveRecord
 	       self::TYPE_WIKI => 'Wiki',
 	    );
 	}
+	
+	public function getTypeText() 
+	{
+        $typeOptions = $this->typeOptions;
+        return isset($typeOptions[$this->type_id]) ?
+                $typeOptions[$this->type_id] :
+                "unknown type ({$this->type_id})";
+    }
 }

@@ -42,7 +42,6 @@ class PostController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'expression'=>'$this->layout = "//layouts/admin"',
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -147,10 +146,13 @@ class PostController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Post']))
 			$model->attributes=$_GET['Post'];
-
+        
+        
 		$this->render('admin',array(
-			'model'=>$model,
+			//'model'=>$model,
+			'dataProvider'=>$model->search()->getData(),
 		));
+		
 	}
 
 	/**

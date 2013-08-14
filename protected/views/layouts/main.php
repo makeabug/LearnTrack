@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
     <title>Starter Template for Bootstrap</title>
 

@@ -22,7 +22,7 @@ $this->pageTitle=Yii::app()->name;
     <div class="col-3">
         <div class='well text-center show-grid'>
             <div><h2><?php echo CHtml::link('Blog', array('post/'))?></h2></div>
-            <div>(109)</div>
+            <div>(<?php echo $blogCount;?>)</div>
         </div>
     </div>
     <div class="col-3">

@@ -13,15 +13,12 @@ $this->menu=array(
 );
 
 Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#post-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
+$('.table .delete').each(function(){
+    var href = $(this).attr('href');
+    $(this).attr('href', '#')
+    .click(function(){
+        post(href);
+    });
 });
 ");
 ?>
@@ -49,7 +46,7 @@ $('.search-form form').submit(function(){
             <td>
                 <?php echo CHtml::link('Show', array('post/view', 'id'=>$data->id));?> | 
                 <?php echo CHtml::link('Edit', array('post/update', 'id'=>$data->id));?> | 
-                <?php echo CHtml::link('Delete', array('post/delete', 'id'=>$data->id));?>
+                <?php echo CHtml::link('Delete', array('post/delete', 'id'=>$data->id), array('class'=>'delete'));?>
             </td>
         </tr>
         <?php endforeach;?>

@@ -22,6 +22,6 @@ $this->menu=array(
     </div>
     <span><?php echo CHtml::encode($model->update_time);?></span>
     <div class="page-content">
-        <?php echo CHtml::encode($model->content); ?>
+        <?php echo nl2br($model->content);//CHtml::encode($model->content); ?>
     </div>
 </div>
